@@ -10,9 +10,9 @@
 #include "gif.h"
 
 //GIF Image en tableau
-#include "Arrow256_32_12gif.h"
-#include "GArrows_256_32bgif.h"
-#include "open-siz-128-64gif.h"
+//#include "Arrow256_32_12gif.h"
+//#include "GArrows_256_32bgif.h"
+//#include "open-siz-128-64gif.h"
 
 /*void gpio_callback(uint gpio, uint32_t events) {
   if (gpio_get(LED_PIN)!=0)
@@ -81,49 +81,49 @@ int main() {
  
   while (1) {
        
- // process_gif(chat);
- process_gif(GArrows_256_32bgif);
-  process_gif(GArrows_256_32bgif);
- process_gif(GArrows_256_32bgif);
- process_gif(GArrows_256_32bgif);
-  process_gif(GArrows_256_32bgif);
-  process_gif(GArrows_256_32bgif);
- process_gif(GArrows_256_32bgif);
- process_gif(GArrows_256_32bgif);
- Fade_out();
+//  // process_gif(chat);
+//  process_gif(GArrows_256_32bgif);
+//   process_gif(GArrows_256_32bgif);
+//  process_gif(GArrows_256_32bgif);
+//  process_gif(GArrows_256_32bgif);
+//   process_gif(GArrows_256_32bgif);
+//   process_gif(GArrows_256_32bgif);
+//  process_gif(GArrows_256_32bgif);
+//  process_gif(GArrows_256_32bgif);
+//  Fade_out();
    
- process_gif(Arrow256_32_12gif);
- process_gif(Arrow256_32_12gif);
-  process_gif(Arrow256_32_12gif);
- process_gif(Arrow256_32_12gif);
- process_gif(Arrow256_32_12gif);
- process_gif(Arrow256_32_12gif);
-  process_gif(Arrow256_32_12gif);
- process_gif(Arrow256_32_12gif);
- Fade_out();
+//  process_gif(Arrow256_32_12gif);
+//  process_gif(Arrow256_32_12gif);
+//   process_gif(Arrow256_32_12gif);
+//  process_gif(Arrow256_32_12gif);
+//  process_gif(Arrow256_32_12gif);
+//  process_gif(Arrow256_32_12gif);
+//   process_gif(Arrow256_32_12gif);
+//  process_gif(Arrow256_32_12gif);
+//  Fade_out();
 
- process_gif(open_siz_128_64gif);
+//  process_gif(open_siz_128_64gif);
    
 //  gpio_set_irq_enabled_with_callback(TEST_PIN, GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
  
 
- while (1) {
-   if (gpio_get(BUTTON2)==0) {
-     process_gif(Arrow256_32_12gif);
-   }
+//  while (1) {
+//    if (gpio_get(BUTTON2)==0) {
+//      process_gif(Arrow256_32_12gif);
+//    }
 
-   if (gpio_get(BUTTON1)==0) {
-     process_gif(GArrows_256_32bgif);
-   }
+//    if (gpio_get(BUTTON1)==0) {
+//      process_gif(GArrows_256_32bgif);
+//    }
    
-   if ( (gpio_get(BUTTON1)!=0) && (gpio_get(BUTTON2)!=0) ) break;
- }
+//    if ( (gpio_get(BUTTON1)!=0) && (gpio_get(BUTTON2)!=0) ) break;
+//  }
  
- Fade_out();
+//  Fade_out();
  
-  while ( (gpio_get(BUTTON1)!=0) && (gpio_get(BUTTON2)!=0) ) {
-    clear_screen();    
-  }
+  // while ( (gpio_get(BUTTON1)!=0) && (gpio_get(BUTTON2)!=0) ) {
+  //   clear_screen();    
+  // }
  
 }
 

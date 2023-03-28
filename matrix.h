@@ -1,6 +1,9 @@
 /**
  * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
  */
+
+#include <stdint.h>
+
 #define G_OE   0
 #define G_LAT  1
 #define G_CLK  2
@@ -17,38 +20,38 @@
 #define G_G1   12
 #define G_B1   13
 
-#define BOOT_BUTTON 22   // Reset par BOOTSEL
+#define BOOT_BUTTON 22   // Reset for BOOTSEL
 
 #define LED_PIN   25     // PICO_DEFAULT_LED_PIN
 
-#define BUTTON1  16      // Bouton CTL 1
-#define BUTTON2  17      // Bouton CTL 2
+#define BUTTON1  16      // Button CTL 1
+#define BUTTON2  17      // Button CTL 2
 
-// - - - - Description PHYSIQUE de L'écran
-// Longueur Totale des MATRICES en série (sur une seule ligne)
-static uint8_t nMatrix_X = 6;
+// - - - - Physical Description of Screen
+// Total Length of MATRICES in series (on a single line)
+static uint8_t nMatrix_X = 1;
 
-//Nb de panneaux sur vrai largeur (mapping des panneaux en ZStripe = zigzag) de x large
-static uint8_t zStripes_X = 6;
+//Number of panels on true width (mapping of panels in ZStripe = zigzag) of x wide
+static uint8_t zStripes_X = 1;
 
-// Nombre de LEDS par Matrices
+// Name of LEDS per Matrix
 static uint8_t nLedsMatrix_Y = 32;
 static uint8_t nLedsMatrix_X = 32;
 
 // - - - - Description LOGIQUE de L'écran - - - - - - 
-// Dimensions du Buffer logique BITMAP en PIXELS X & Y
-// la limite en RAM est proche de 164 ko sur 264ko dispo.
-// * par exemple 320 * 128 pixels -> 4 x 40960 oc.
-// * peut être supérieur a l'afficheur physique
-// * buffer utilisé pour fichiers gif
-#define nb_pixel_X        256     // donne 4 x 61440 oc. = 33 ko / 264ko de RAM
+// BITMAP Logical Buffer Dimensions in X & Y PIXELS
+// the RAM limit is close to 164 kb out of 264 kb available.
+// * for example 320 * 128 pixels -> 4 x 40960 oc.
+// * may be higher than physical display
+// * buffer used for gif files
+#define nb_pixel_X        32     
 #define nb_pixel_Y        32
 
 static uint8_t xRED[nb_pixel_X][nb_pixel_Y] = {0};
 static uint8_t xGREEN[nb_pixel_X][nb_pixel_Y] = {0};
 static uint8_t xBLUE[nb_pixel_X][nb_pixel_Y] = {0};
 
-//Curseur next PrintChar
+//Cursor next PrintChar
 static uint16_t CurX=0;
 static uint16_t CurY=0; 
  

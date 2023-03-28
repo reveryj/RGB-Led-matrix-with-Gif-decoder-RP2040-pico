@@ -27,7 +27,7 @@ uint8_t gamma8[] = {
   177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
   215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 };
   
-//==== Proc de rafraichissement ecran =====
+//==== Screen Refresh =====
 void setRow(uint8_t row) {
   gpio_put(G_A, ((row & 1)==0)?0:1);
   gpio_put(G_B, ((row & 2)==0)?0:1);
@@ -65,7 +65,7 @@ void SetXY(uint16_t x, uint16_t y) {
   CurY = y;
 }
 
-//Efface ecran
+//Erase screen
 void Fade_out(void) {
  for (uint16_t l=0; l<255; l++) {
    for (uint16_t x=0; x < nb_pixel_X; x++) {
@@ -80,7 +80,7 @@ void Fade_out(void) {
 }
 
 
-//------- BALAYAGE PANNEAU RGB - TACHE DE FOND - MULTICORE 2 -------
+//------- RGB PANEL SCAN - BACKGROUND - MULTICORE 2 -------
 void core2() {
 uint16_t frame = 0;
 uint16_t xpan, col, col0, col2, rows, rows2, rows216, rows16;
@@ -108,7 +108,7 @@ uint16_t Ymatrix_1, Ymatrix_2_1;
      gpio_put(G_LAT, 0);
      
      for (xpan=0; xpan < nMatrix_X; xpan++) {
-       if (xpan > zStripes_X-1) {   // xpan = 2, 3 (matrices dans le bon sens)
+       if (xpan > zStripes_X-1) {   // xpan = 2, 3 (matrices in the right direction)
      
          for ( col=nLedsMatrix_X*(xpan-zStripes_X); col < nLedsMatrix_X*(1+xpan-zStripes_X); col++) {
            
@@ -120,13 +120,13 @@ uint16_t Ymatrix_1, Ymatrix_2_1;
            if (xGREEN[col][rows216] > frame) gpio_put(G_G2,1); else gpio_put(G_G2,0);
            if (xBLUE[col][rows216] > frame) gpio_put(G_B2,1); else gpio_put(G_B2,0);
 	         
-           gpio_put(G_CLK, 1);     // Tempo sur CLK
+           gpio_put(G_CLK, 1);     // Time on CLK
            gpio_put(G_CLK, 1);
            gpio_put(G_CLK, 1);
            gpio_put(G_CLK, 0);
          }
          
-       } else {    // xpan = 0, 1 (matrices inversées tête-bèche)
+       } else {    // xpan = 0, 1 (matrices reversed head to tail)
      
          for (col = nLedsMatrix_X*(zStripes_X-xpan); col > nLedsMatrix_X*((zStripes_X-1-xpan)); col--) {
         
@@ -138,7 +138,7 @@ uint16_t Ymatrix_1, Ymatrix_2_1;
            if (xGREEN[col-1][Ymatrix_2_1 - rows] > frame) gpio_put(G_G2,1); else gpio_put(G_G2,0);
            if (xBLUE[col-1][Ymatrix_2_1 - rows] > frame) gpio_put(G_B2,1); else gpio_put(G_B2,0);
            
-	         gpio_put(G_CLK, 1);     // Tempo sur CLK
+	         gpio_put(G_CLK, 1);     // Time on CLK
            gpio_put(G_CLK, 1);
            gpio_put(G_CLK, 1);
            gpio_put(G_CLK, 0);
